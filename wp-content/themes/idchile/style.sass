@@ -1,0 +1,137 @@
+/*Variables*/
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,600)
+
+$color_text: #6b6b6b
+$general_font: 'Open Sans', sans-serif
+
+/* Global classes */
+.removeStyleTagA
+	text-decoration: none
+
+.uppercase
+	text-transform: uppercase
+
+.font-family
+	font-family: $general_font
+	font-weight: 300
+
+.p
+	font-size: 19px
+	@extend .font-family
+
+/* Mixins */
+
+@mixin border-radius($radius)
+	-webkit-border-radius: $radius
+	-o-border-radius: $radius
+	-ms-border-radius: $radius
+	-moz-border-radius: $radius
+	border-radius: $radius
+
+@mixin transition($transition...)
+	-moz-transition: $transition
+	-o-transition: $transition
+	-ms-transition: $transition
+	-webkit-transition: $transition
+	transition: $transition
+
+/* General Styles */
+body
+	@extend .font-family
+
+.custom-inline
+	padding: 0px
+	margin: 0px
+	display: table-cell
+	width: auto
+	text-align: right
+	vertical-align: middle
+	.permalink
+		color: $color_text
+		font-size: 14px
+		@extend .removeStyleTagA
+
+.nav-menu
+	height: 102px
+	display: table
+	width: 100%
+
+.wrap-search
+	display: inline-block
+	background-color: #00adef
+	@include border-radius(50%)
+	@include transition(border-radius .1	s)
+	.search_input
+		max-width: 0px
+		display: inline-block
+		vertical-align: super
+		line-height: 0
+		border-radius: 15px
+		border: none
+		overflow: hidden
+		margin: 0px -10px 0px 0px
+		@include transition(max-width 1s, margin 1s)
+	.zoom_search
+		padding: 10px
+		font-size: 20px
+		color: #FFF
+		&:hover
+			cursor: pointer
+
+.wrap-search.opened
+	@include border-radius(20px)
+	@include transition(border-radius 1s)
+	.search_input
+		max-width: 200px
+		margin: 0px 0px 0px 10px
+		padding: 4px
+
+.banner
+	.wrap-sliders
+		height: 548px
+		background-color: #fec500
+	.line_bottom
+		border-top: 15px solid #ffde00
+
+.nosotros_block
+	margin-top: 112px
+	.picture
+		padding-right: 50px
+	.info_company
+		padding-left: 50px
+		color: $color_text
+
+
+h3.title_company, .title_company
+	font-size: 25px
+	@extend .uppercase
+	@extend .font-family
+	margin: 0px 0px 20px 0px
+
+.info_company
+	p
+		font-size: 19px
+
+.flex
+	display: flex
+	align-items: center
+
+.servicios_block
+	margin-top: 100px
+
+.text-box
+	max-width: 520px
+	margin-bottom: 40px
+	p
+		@extend .p
+
+.column-service
+	img
+		@include border-radius(50%)
+		border: 1px solid #00adef
+		&:hover
+			border-top: 1px solid #00adef
+			border-bottom: 1px solid #0176a3
+			border-left: 1px solid #5790a5
+			border-right: 1px solid #9ccbdd

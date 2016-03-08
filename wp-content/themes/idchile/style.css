@@ -1,0 +1,47 @@
+/*Variables */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,600);
+/* Global classes */
+.removeStyleTagA, .custom-inline .permalink { text-decoration: none; }
+
+.uppercase, h3.title_company, .title_company { text-transform: uppercase; }
+
+.font-family, .p, .text-box p, body, h3.title_company, .title_company { font-family: "Open Sans", sans-serif; font-weight: 300; }
+
+.p, .text-box p { font-size: 19px; }
+
+/* Mixins */
+/* General Styles */
+.custom-inline { padding: 0px; margin: 0px; display: table-cell; width: auto; text-align: right; vertical-align: middle; }
+.custom-inline .permalink { color: #6b6b6b; font-size: 14px; }
+
+.nav-menu { height: 102px; display: table; width: 100%; }
+
+.wrap-search { display: inline-block; background-color: #00adef; -webkit-border-radius: 50%; -o-border-radius: 50%; -ms-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; -moz-transition: border-radius 0.1 s; -o-transition: border-radius 0.1 s; -ms-transition: border-radius 0.1 s; -webkit-transition: border-radius 0.1 s; transition: border-radius 0.1 s; }
+.wrap-search .search_input { max-width: 0px; display: inline-block; vertical-align: super; line-height: 0; border-radius: 15px; border: none; overflow: hidden; margin: 0px -10px 0px 0px; -moz-transition: max-width 1s, margin 1s; -o-transition: max-width 1s, margin 1s; -ms-transition: max-width 1s, margin 1s; -webkit-transition: max-width 1s, margin 1s; transition: max-width 1s, margin 1s; }
+.wrap-search .zoom_search { padding: 10px; font-size: 20px; color: #FFF; }
+.wrap-search .zoom_search:hover { cursor: pointer; }
+
+.wrap-search.opened { -webkit-border-radius: 20px; -o-border-radius: 20px; -ms-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; -moz-transition: border-radius 1s; -o-transition: border-radius 1s; -ms-transition: border-radius 1s; -webkit-transition: border-radius 1s; transition: border-radius 1s; }
+.wrap-search.opened .search_input { max-width: 200px; margin: 0px 0px 0px 10px; padding: 4px; }
+
+.banner .wrap-sliders { height: 548px; background-color: #fec500; }
+.banner .line_bottom { border-top: 15px solid #ffde00; }
+
+.nosotros_block { margin-top: 112px; }
+.nosotros_block .picture { padding-right: 50px; }
+.nosotros_block .info_company { padding-left: 50px; color: #6b6b6b; }
+
+h3.title_company, .title_company { font-size: 25px; margin: 0px 0px 20px 0px; }
+
+.info_company p { font-size: 19px; }
+
+.flex { display: flex; align-items: center; }
+
+.servicios_block { margin-top: 100px; }
+
+.text-box { max-width: 520px; margin-bottom: 40px; }
+
+.column-service img { -webkit-border-radius: 50%; -o-border-radius: 50%; -ms-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; border: 1px solid #00adef; }
+.column-service img:hover { border-top: 1px solid #00adef; border-bottom: 1px solid #0176a3; border-left: 1px solid #5790a5; border-right: 1px solid #9ccbdd; }
+
+/*# sourceMappingURL=style.css.map */
