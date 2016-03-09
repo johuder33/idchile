@@ -29,7 +29,28 @@ $general_font: 'Open Sans', sans-serif
 	-moz-border-radius: $radius
 	border-radius: $radius
 
+@mixin box-shadow($shadow...)
+	-webkit-box-shadow: $shadow
+	-o-box-shadow: $shadow
+	-ms-box-shadow: $shadow
+	-moz-box-shadow: $shadow
+	box-shadow: $shadow
+
 @mixin transition($transition...)
+	-moz-transition: $transition
+	-o-transition: $transition
+	-ms-transition: $transition
+	-webkit-transition: $transition
+	transition: $transition
+
+@mixin transform($transform...)
+	-moz-transform: $transform
+	-o-transform: $transform
+	-ms-transform: $transform
+	-webkit-transform: $transform
+	transform: $transform
+
+@mixin animation($transition...)
 	-moz-transition: $transition
 	-o-transition: $transition
 	-ms-transition: $transition
@@ -127,11 +148,124 @@ h3.title_company, .title_company
 		@extend .p
 
 .column-service
+	position: relative
+	display: inline-block
+	overflow: hidden
+	@include border-radius(50%)
 	img
 		@include border-radius(50%)
+		@include transition(border 1s .5s)
 		border: 1px solid #00adef
+		position: relative
+		z-index: 3
 		&:hover
+			border: 1px solid transparent
+			cursor: pointer
+			& +.rotateHoverAnimation
+				opacity: 1
+				@include transform(rotate(1080deg))
+		&+.rotateHoverAnimation
+			@include border-radius(50%)
+			@include transition(opacity 1s, transform 10s)
+			@include transform(rotate(0deg))
 			border-top: 1px solid #00adef
-			border-bottom: 1px solid #0176a3
-			border-left: 1px solid #5790a5
-			border-right: 1px solid #9ccbdd
+			border-bottom: 1px solid #00adef
+			position: absolute
+			height: 100%
+			width: 100%
+			top: 0px
+			left: 0px
+			z-index: 1
+			opacity: 0
+
+div.box-service
+	display: inline-block
+	width: auto
+	float: none
+
+.text-service
+	max-width: 310px
+	width: 100%
+	margin-top: 50px
+	& h2
+		font-size: 20px
+		@extend .font-family
+		@extend .uppercase
+		margin: 0px 0px 10px 0px
+		color: $color_text
+	& .info-box
+		@extend .p
+		@extend .font-family
+		color: $color_text
+		padding: 0px 5px
+
+.box-title
+	& h2
+		font-size: 25px
+		margin: 0px
+		@extend .uppercase
+	& h3
+		font-size: 20px
+		margin: 0px
+		display: inline-block
+		@extend .uppercase
+	.ul-inline
+		display: inline-block
+		color: $color_text
+		font-size: 20px
+		margin: 0px 0px 0px 5px
+		& li:after
+			content: "|"
+			margin: 0px
+			color: $color_text
+		& li
+			padding: 0px
+		& li:last-child:after
+			display: none
+		& a
+			@extend .removeStyleTagA
+			@include transition(color 1s)
+			@extend .font-family
+			@extend .uppercase
+			color: $color_text
+			&:hover
+				color: #00adef
+
+.productos_block
+	margin-top: 115px
+
+.wrap_products
+	margin-top: 65px
+	.product-box
+		border: 1px solid #e3e3e3
+		max-width: 270px
+		@include box-shadow(0px 5px 10px -4px #ececec)
+		margin-bottom: 100px
+		.controls-box
+			height: 50px
+			background-color: #00adef
+			display: table
+			width: 100%
+			.view
+				height: inherit
+				width: 170px
+				display: table-cell
+				vertical-align: middle
+				text-indent: 20px
+				a
+					color: #FFF
+					font-weight: bold
+					@extend .uppercase
+					@extend .removeStyleTagA
+			.subControls
+				width: auto
+				display: table-cell
+				.heart, .save
+					width: 50%
+					color: #FFF
+					height: 100%
+					float: left
+				.heart
+					background-color: #acacac
+				.save
+					background-color: #faa21b

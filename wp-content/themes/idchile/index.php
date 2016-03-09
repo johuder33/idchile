@@ -42,22 +42,151 @@ get_header();
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+	<div class="row text-center">
+		<div class="box-service">
 			<figure class="clearfix column-service">
-				<img src="<?php bloginfo('template_url'); ?>/assets/images/servicio1.png" alt="Servicios" title="Servicios" class="img-responsive pull-right">
+				<img src="<?php bloginfo('template_url'); ?>/assets/images/servicio1.png" alt="Servicios" title="Servicios" class="img-responsive">
+				<span class="rotateHoverAnimation"></span>
 			</figure>
+
+			<article class="text-service">
+				<h2>Servicio de Impresión</h2>
+				<div class="info-box text-center">
+					<p>Encuentra información sobre viajes y paseos a lugares de interés, hospedajes, transporte.</p>
+				</div>
+			</article>
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+		<div class="box-service">
 			<figure class="clearfix column-service">
 				<img src="<?php bloginfo('template_url'); ?>/assets/images/servicio2.png" alt="Servicios" title="Servicios" class="img-responsive center-block">
+				<span class="rotateHoverAnimation"></span>
 			</figure>
+			<article class="text-service">
+				<h2>Personalizacion de ID</h2>
+				<div class="info-box text-center">
+					<p>Encuentra información sobre viajes y paseos a lugares de interés, hospedajes, transporte.</p>
+				</div>
+			</article>
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+		<div class="box-service">
 			<figure class="clearfix column-service">
-				<img src="<?php bloginfo('template_url'); ?>/assets/images/servicio3.png" alt="Servicios" title="Servicios" class="img-responsive pull-left">
+				<img src="<?php bloginfo('template_url'); ?>/assets/images/servicio3.png" alt="Servicios" title="Servicios" class="img-responsive">
+				<span class="rotateHoverAnimation"></span>
 			</figure>
+			<article class="text-service">
+				<h2>Soporte Técnico</h2>
+				<div class="info-box text-center">
+					<p>Encuentra información sobre viajes y paseos a lugares de interés, hospedajes, transporte.</p>
+				</div>
+			</article>
 		</div>
+	</div>
+</section>
+
+<section class="productos_block">
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 box-title text-left">
+			<h2>Producto destacados</h2>
+		</div>
+
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 box-title text-right">
+			<h3>Categoria: </h3>
+			<ul class="list-inline ul-inline">
+				<li>
+					<a href="!#">Impresoras</a>
+				</li><!--
+				--><li>
+					<a href="!#">Accesorios</a>
+				</li><!--
+				--><li>
+					<a href="!#">Consumibles</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<section class="wrap_products">
+			<div class="row">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<article class="product-box">
+						<figure>
+							<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive">
+						</figure>
+
+						<div class="controls-box">
+							<div class="view">
+								<a href="!#">Ver Más</a>
+							</div>
+
+							<div class="subControls">
+								<div class="heart"></div>
+								<div class="save"></div>
+							</div>
+						</div>
+					</article>
+				</div>
+
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<article class="product-box">
+						<figure>
+							<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive">
+						</figure>
+
+						<div class="controls-box">
+							<div class="view">
+								<a href="!#">Ver Más</a>
+							</div>
+
+							<div class="subControls">
+								<div class="heart"></div>
+								<div class="save"></div>
+							</div>
+						</div>
+					</article>
+				</div>
+
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<article class="product-box">
+						<figure>
+							<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive">
+						</figure>
+
+						<div class="controls-box">
+							<div class="view">
+								<a href="!#">Ver Más</a>
+							</div>
+
+							<div class="subControls">
+								<div class="heart"></div>
+								<div class="save"></div>
+							</div>
+						</div>
+					</article>
+				</div>
+
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<article class="product-box">
+						<figure>
+							<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive">
+						</figure>
+
+						<div class="controls-box">
+							<div class="view">
+								<a href="!#">Ver Más</a>
+							</div>
+
+							<div class="subControls">
+								<div class="heart"></div>
+								<div class="save"></div>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
 	</div>
 </section>
 
