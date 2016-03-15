@@ -109,7 +109,6 @@ get_header();
 
 	<div class="row">
 		<section class="wrap_products">
-			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 					<article class="product-box">
 						<figure>
@@ -185,9 +184,30 @@ get_header();
 						</div>
 					</article>
 				</div>
-			</div>
 		</section>
 	</div>
+</section>
+
+<section class="brands-block row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="row title-brand">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+				<h2>Marcas</h2>
+			</div>
+		</div>
+
+		<div class="row title-brand">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+				<article class="brand-info">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut aliquid modi, soluta facere. Saepe mollitia qui quisquam, accusantium itaque quis!</p>
+				</article>
+			</div>
+		</div>
+	</div>
+
+	<section class="wrap-carousel col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		
+	</section>
 </section>
 
 </div>
