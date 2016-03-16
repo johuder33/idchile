@@ -12,7 +12,19 @@
 				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 					<section class="address">
 						<h3 class="phone-number">(800) 548-0923</h3>
-						<div class="sociales"></div>
+						<div class="sociales">
+							<a href="#!" class="btn-circle">
+								<i class="fa fa-facebook"></i>
+							</a>
+
+							<a href="#!" class="btn-circle">
+								<i class="fa fa-twitter"></i>
+							</a>
+
+							<a href="#!" class="btn-circle">
+								<i class="fa fa-instagram"></i>
+							</a>
+						</div>
 						<address class="address-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, facere.</address>
 					</section>
 				</div>
@@ -23,8 +35,8 @@
 							<div class="form-group">
 								<input type="text" class="form-control field" placeholder="Nombre" name="nombre" />
 								<input type="text" class="form-control field" placeholder="E-mail" name="email" />
-								<input type="text" class="form-control field" placeholder="Mensaje" name="mensaje" />
-								<input type="submit" class="btn btn-default btn-sm" value="Enviar" />
+								<textarea name="mensaje" class="form-control field" cols="30" rows="10" placeholder="Mensaje"></textarea>
+								<input type="submit" class="btn btn-default btn-sm btn-form" value="Enviar" />
 							</div>
 						</form>
 					</section>

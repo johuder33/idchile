@@ -1,6 +1,7 @@
 <?php
 
 // agregamos los estilos
+wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
 wp_enqueue_style('bootstrap', get_template_directory_uri().'/assets/bootstrap/css/bootstrap.min.css');
 wp_enqueue_style('style', get_stylesheet_uri());
 
