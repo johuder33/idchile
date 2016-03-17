@@ -11,19 +11,19 @@
 		<nav class="nav-menu clearfix">
 			<ul class="list-inline custom-inline">
 				<li>
-					<a href="" class="permalink">Nosotros</a>
+					<a href="#nosotros-section" class="permalink">Nosotros</a>
 				</li>
 				<li>
-					<a href="" class="permalink">Servicios</a>
+					<a href="#servicios-section" class="permalink">Servicios</a>
 				</li>
 				<li>
-					<a href="" class="permalink">Productos</a>
+					<a href="#productos-section" class="permalink">Productos</a>
 				</li>
 				<li>
-					<a href="" class="permalink">Marcas</a>
+					<a href="#marcas-section" class="permalink">Marcas</a>
 				</li>
 				<li>
-					<a href="" class="permalink">Contacto</a>
+					<a href="#contacto-section" class="permalink">Contacto</a>
 				</li>
 
 				<li>

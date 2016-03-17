@@ -1,6 +1,6 @@
 <footer class="container-fluid footer-block">
 	<section class="row footer-section">
-		<div class="container wrap-footer">
+		<div class="container wrap-footer" id="contacto-section">
 			
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-md-push-5 col-lg-push-5 wrap-form-title">
