@@ -50,5 +50,6 @@
 		<span class="copyright">Copyright 2016 ID Chile, Group. All rights reserved.</span>
 	</div>
 </footer>
+<?php wp_footer(); ?>
 </body>
 </html>
