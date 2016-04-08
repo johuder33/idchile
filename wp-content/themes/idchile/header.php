@@ -27,9 +27,14 @@
 				</li>
 
 				<li>
-					<div class="wrap-search">
-						<input type="text" class="search_input">
-						<span class="glyphicon glyphicon-search zoom_search"></span>
+					<div class="wrap-search clearfixs">
+						<span class="pull">
+							<input type="text" class="search_input">
+						</span>
+
+						<span class="pull">
+							<span class="glyphicon glyphicon-search zoom_search"></span>
+						</span>
 					</div>
 				</li>
 			</ul>

@@ -8,7 +8,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="row elements-box">
 				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 					<section class="address">
 						<h3 class="phone-number">(800) 548-0923</h3>

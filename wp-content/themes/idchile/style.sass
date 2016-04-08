@@ -2,6 +2,9 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,600)
 
+$smartphonesPortrait: 435px
+$smartphonesLandscape: 736px
+$ipads: 768px
 $color_text: #6b6b6b
 $general_font: 'Open Sans', sans-serif
 
@@ -20,6 +23,9 @@ $general_font: 'Open Sans', sans-serif
   font-size: 19px
   @extend .font-family
 
+.hr-border
+  border-bottom: 2px solid #acacac
+  display: block
 /* Mixins */
 
 @mixin border-radius($radius)
@@ -68,10 +74,18 @@ body
   width: auto
   text-align: right
   vertical-align: middle
-  .permalink
-    color: $color_text
-    font-size: 14px
-    @extend .removeStyleTagA
+  & > li
+    padding: 0px
+    margin-left: 22px
+    @extend .uppercase
+    &:last-child
+      margin-left: 50px
+    &:first-child
+      margin-left: 0px
+    .permalink
+      color: $color_text
+      font-size: 14px
+      @extend .removeStyleTagA
 
 .nav-menu
   height: 102px
@@ -137,6 +151,8 @@ h3.title_company, .title_company
 .info_company
   p
     font-size: 19px
+    &:last-child
+      margin-bottom: 0px
 
 .flex
   display: flex
@@ -218,15 +234,13 @@ div.box-service
     color: $color_text
     font-size: 20px
     margin: 0px 0px 0px 5px
-    & li:after
-      content: "|"
-      margin: 0px
-      color: $color_text
     & li
       padding: 0px
-    & li:last-child:after
-      display: none
     & a
+      padding-left: 0px
+      padding-right: 5px
+      margin-right: 5px
+      border-right: 1px solid $color_text
       @extend .removeStyleTagA
       @include transition(color 1s)
       @extend .font-family
@@ -234,18 +248,33 @@ div.box-service
       color: $color_text
       &:hover
         color: #00adef
+    & li:last-child a
+      padding-right: 0px
+      margin-right: 0px
+      border-right: none
 
 .productos_block
   margin-top: 115px
 
 .wrap_products
   margin-top: 65px
+  & > div:nth-child(1), & > div:nth-child(2)
+    margin-bottom: 25px
   .product-box
     border: 1px solid #e3e3e3
     max-width: 270px
     position: relative
     @include transition(border .5s)
     @include box-shadow(0px 5px 10px -4px #ececec)
+    &
+      figure
+        overflow: hidden
+        img
+          @include transform(scale(1))
+          @include transition(transform .5s)
+    &:hover
+      figure > img
+        @include transform(scale(1.1))
     &.selectable-compared
       cursor: pointer
       &.active, &:hover
@@ -285,15 +314,38 @@ div.box-service
       .subControls
         width: auto
         display: table-cell
+        height: inherit
         .heart, .save
           width: 50%
           color: #FFF
           height: 100%
           float: left
+          text-align: center
+          cursor: pointer
+          i
+            position: relative
+            top: 50%
+            display: block
+            width: 100%
+            font-size: 2rem
+            @include transform(translateY(-50%))
         .heart
           background-color: #acacac
+          i
+            &:hover
+              &:after
+                display: block
+              &:before
+                display: none
+            &:after
+              content: "\e005" !important
+              color: red
+              display: none
         .save
           background-color: #faa21b
+          i
+            &:hover
+              color: #00ADEF
 
 .brands-block
   margin-top: 115px
@@ -447,3 +499,160 @@ div.box-service
       &:empty
         margin-top: 0px
         border: 1px solid blue
+
+.single-product-block
+  margin-top: 180px
+  .wrap_products
+    margin: 0px
+    .product-elastic-box
+      max-width: 440px
+      width: 100%
+      margin: 0 auto
+      .figcaption
+        padding: 0px 15px 20px
+        *
+          margin: 0px
+          color: #acacac
+          @extend .font-family
+          font-size: 25px
+          font-weight: bold
+        .price
+          color: #00adef
+      .controls-box
+        .view
+          width: 75%
+  .list-attr-item
+    .attr-item
+      @extend .font-family
+      font-size: 20px
+      color: #acacac
+      &.title-attr
+        *:not(span)
+          margin: 0px 0px 25px
+          font-size: 31px
+      &.info-attr
+        padding-top: 25px
+        .state
+          padding-bottom: 25px
+          .stock
+            color: #00adef
+      &.brand-attr
+        padding-top: 25px
+        .text-line
+          padding: 0px 15px
+        .optionBuy
+          > div:first-child
+            margin-bottom: 25px
+        .features
+          border-top: 1px solid #acacac
+          border-bottom: 1px solid #acacac
+          padding: 15px 0px
+          color: #666666
+          @extend .uppercase
+
+// Media Queries for Devices
+
+@media only screen and (max-device-width: $ipads) and (orientation: portrait)
+  .nosotros_block
+    .picture
+      padding-right: 15px
+
+  .nosotros_block
+    .info_company
+      padding-left: 15px
+      p
+        font-size: 14px
+      .title_company
+        font-size: 18px
+        margin-bottom: 10px
+
+  .servicios_block
+    .text-box
+      max-width: none
+    .box-service
+      margin-bottom: 20px
+      &:last-child
+        margin-bottom: 0px
+      .text-service
+        max-width: none
+
+  .productos_block
+    .box-title
+      h2, h3
+        font-size: 16px
+      .ul-inline
+        font-size: 14px
+  .footer-block
+    margin-top: 20px
+    .footer-section
+      height: auto
+      .wrap-footer
+        top: 0px
+        @include transform(translateY(0%))
+        .elements-box
+          & > div
+            margin: 10px 0px
+          .address
+            max-width: none
+        .form-block
+          .form-group
+            margin: 0px
+      .wrap-form-title
+        .form-title
+          margin: 20px 0px 10px
+    .subfooter
+      height: auto
+      padding: 10px 0px
+      .copyright
+        position: relative
+        top: 0px
+        @include transform(translateY(0%))
+
+@media only screen and (max-device-width: $smartphonesPortrait)
+  .nosotros_block
+    margin-top: 20px
+    .flex
+      display: block
+      .info_company
+        margin-top: 20px
+  .servicios_block, .productos_block
+    margin-top: 20px
+    padding-top: 20px
+    border-top: 2px solid $color_text
+    .wrap_products
+      & > div
+        margin: 15px 0px 0px 0px
+        &:first-child
+          margin: 0px
+  .brands-block
+    margin-top: 20px
+  .footer-block
+    .subfooter
+      font-size: 100%
+      .copyright
+        font-size: 1.3rem
+
+@media only screen and (max-device-width: $smartphonesLandscape) and (min-device-width: 567px) and (orientation: landscape)
+  .productos_block
+    .wrap_products
+      & > div
+        width: 50%
+
+@media only screen and (max-device-width: $smartphonesLandscape) and (orientation: landscape)
+  .nosotros_block
+    margin-top: 20px
+    .flex
+      display: block
+      & > div
+        padding: 0px 15px
+      .picture
+        margin-bottom: 20px
+  .servicios_block, .productos_block, .brands-block
+    margin-top: 40px
+  .productos_block
+    .wrap_products
+      & > div
+        margin-bottom: 15px
+        &:last-child
+          margin-bottom: 0px
+// Media Queries for PC, laptops
