@@ -1,5 +1,21 @@
 jQuery(document).ready(function($){
 	// encapsulate the vars
+
+	var mySwiper = new Swiper ('.swiper-container', {
+    // Optional parameters
+    slidesPerView: 3,
+    centeredSlides: true,
+    simulateTouch: false,
+    paginationHide:false,
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+    spaceBetween: 30,
+    speed: 1000,
+    loop: true
+  });
+
 	(function(){
 		var elements = [];
 		var limit = 2;
