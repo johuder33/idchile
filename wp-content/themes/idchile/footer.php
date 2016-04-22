@@ -11,7 +11,11 @@
 			<div class="row elements-box">
 				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 					<section class="address">
-						<h3 class="phone-number">(800) 548-0923</h3>
+						<h3 class="phone-number">
+							<a href="tel:+8005480923">
+								(800) 548-0923
+							</a>
+						</h3>
 						<div class="sociales">
 							<a href="#!" class="btn-circle">
 								<i class="fa fa-facebook"></i>
@@ -31,12 +35,12 @@
 
 				<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
 					<section class="form-block">
-						<form action="" class="form-horizontal">
+						<form action="" class="form-landscape">
 							<div class="form-group">
 								<input type="text" class="form-control field" placeholder="Nombre" name="nombre" />
 								<input type="text" class="form-control field" placeholder="E-mail" name="email" />
 								<textarea name="mensaje" class="form-control field" cols="30" rows="10" placeholder="Mensaje"></textarea>
-								<input type="submit" class="btn btn-default btn-sm btn-form" value="Enviar" />
+								<button class="btn btn-default btn-sm btn-form">Enviar</button>
 							</div>
 						</form>
 					</section>
