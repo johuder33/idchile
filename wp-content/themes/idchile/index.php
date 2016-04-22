@@ -3,211 +3,79 @@ get_header();
 ?>
 
 <section class="banner">
-	<div class="wrap-sliders">
+	<div class="wrap-static-slide">
 	</div>
 	<div class="line_bottom"></div>
 </section>
 
 <div class="container">
-	<section class="nosotros_block" id="nosotros-section">
-		<div class="row flex">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 picture">
+
+<section class="row single-product-block">
+	<div class="wrap_products clearfix">
+		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+			<article class="product-box product-elastic-box">
 				<figure>
-					<img src="<?php bloginfo('template_url'); ?>/assets/images/nosotros.png" alt="Quienes Somos" title="Quienes Somos" class="img-responsive center-block">
+					<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive center-block">
+					<figcaption class="figcaption">
+						<h2>Sed Ut Perspiciatis</h2>
+						<span class="price">$680.00</span>
+					</figcaption>
 				</figure>
-			</div>
 
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 info_company">
-				<div class="">
-					<h3 class="title_company">Nombre de la Empresa</h3>
-					<h3 class="title_company">Nosotros</h3>
+				<div class="controls-box">
+					<div class="view">
+						<a href="!#">Ver Más</a>
+					</div>
 
-					<article class="text-justify">
-						<p>somos una nueva compañia de producción en medios de comunicación que se especializa en la creación de conceptos para la industria aeronáutica con énfasis en la industria de la aviación y las herramientas para identificación</p>
+					<div class="subControls">
+						<div class="heart"></div>
+						<div class="save"></div>
+					</div>
+				</div>
+			</article>
+		</div>
 
-						<p>nuestro objetivo es crear conceptos que son una declaración sobre el valor, la identidad, el propósito y la misión de su organización. Nuestro principal objetivo es articular la personalidad y los valores cualitativos de su marca.</p>
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-lg-push-1 col-md-push-1">
+			<?php do_action( 'woocommerce_single_product_summary' ); ?>
+			<div class="list-attr-item">
+				<div class="attr-item title-attr">
+					<h1>Modelo: AT-145</h1>
+					<span class="hr-border"></span>
+				</div>
+
+				<div class="attr-item info-attr">
+					<article class="state">
+						<span>Disponibilidad:</span> <span class="stock">In Stock</span>
 					</article>
-				</div>
-			</div>
-		</div>
-	</section>
 
-<section class="servicios_block" id="servicios-section">
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-			<h1 class="title_company">servicios</h1>
-			<div class="text-box center-block">
-				<p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="row text-center">
-		<div class="box-service">
-			<figure class="clearfix column-service">
-				<img src="<?php bloginfo('template_url'); ?>/assets/images/servicio1.png" alt="Servicios" title="Servicios" class="img-responsive">
-				<span class="rotateHoverAnimation"></span>
-			</figure>
-
-			<article class="text-service">
-				<h2>Servicio de Impresión</h2>
-				<div class="info-box text-center">
-					<p>Encuentra información sobre viajes y paseos a lugares de interés, hospedajes, transporte.</p>
-				</div>
-			</article>
-		</div>
-
-		<div class="box-service">
-			<figure class="clearfix column-service">
-				<img src="<?php bloginfo('template_url'); ?>/assets/images/servicio2.png" alt="Servicios" title="Servicios" class="img-responsive center-block">
-				<span class="rotateHoverAnimation"></span>
-			</figure>
-			<article class="text-service">
-				<h2>Personalizacion de ID</h2>
-				<div class="info-box text-center">
-					<p>Encuentra información sobre viajes y paseos a lugares de interés, hospedajes, transporte.</p>
-				</div>
-			</article>
-		</div>
-
-		<div class="box-service">
-			<figure class="clearfix column-service">
-				<img src="<?php bloginfo('template_url'); ?>/assets/images/servicio3.png" alt="Servicios" title="Servicios" class="img-responsive">
-				<span class="rotateHoverAnimation"></span>
-			</figure>
-			<article class="text-service">
-				<h2>Soporte Técnico</h2>
-				<div class="info-box text-center">
-					<p>Encuentra información sobre viajes y paseos a lugares de interés, hospedajes, transporte.</p>
-				</div>
-			</article>
-		</div>
-	</div>
-</section>
-
-<section class="productos_block" id="productos-section">
-	<div class="row">
-		<div class="col-xs-12 col-sm-4 col-md-6 col-lg-6 box-title text-left">
-			<h2>Producto destacados</h2>
-		</div>
-
-		<div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 box-title text-right">
-			<h3>Categoria: </h3>
-			<ul class="list-inline ul-inline">
-				<li>
-					<a href="!#">Impresoras</a>
-				</li><!--
-				--><li>
-					<a href="!#">Accesorios</a>
-				</li><!--
-				--><li>
-					<a href="!#">Consumibles</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="row">
-		<section class="wrap_products">
-				<?php
-
-				$i = 0;
-
-				while($i < 4){
-				?>
-				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-					<article class="product-box center-block">
-						<figure>
-							<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive">
-						</figure>
-
-						<div class="controls-box">
-							<div class="view">
-								<a href="!#">Ver Más</a>
-							</div>
-
-							<div class="subControls">
-								<div class="heart">
-									<i class="glyphicon glyphicon-heart-empty"></i>
-								</div>
-								<div class="save">
-									<i class="fa fa-share-square-o"></i>
-								</div>
-							</div>
+					<article class="description-product">
+						<div>DESCRIPCIÓN DEL PRODUCTO</div>
+						<div class="paragraph-product text-justify">
+							<p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
 						</div>
 					</article>
 				</div>
-				<?php	
-				$i++;
-				}
 
-				?>
-		</section>
-	</div>
-</section>
+				<div class="attr-item brand-attr">
+					<article class="optionBuy">
+						<div>OPCIONES DE COMPRA:</div>
 
-<section class="brands-block row" id="marcas-section">
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<div class="row title-brand">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-				<h2>Marcas</h2>
-			</div>
-		</div>
-
-		<div class="row title-brand">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-				<article class="brand-info">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut aliquid modi, soluta facere. Saepe mollitia qui quisquam, accusantium itaque quis!</p>
-				</article>
+						<div class="brand-tag">
+							<span class="text-line">Marca*</span>
+							<article class="features">
+								<span class="text-line">HID</span>
+							</article>
+						</div>
+					</article>
+				</div>
 			</div>
 		</div>
 	</div>
-
-	<section class="wrap-carousel col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<div class="swiper-container">
-		    <!-- Additional required wrapper -->
-		    <div class="swiper-wrapper">
-		        <!-- Slides -->
-		        <div class="swiper-slide">
-		        	<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive center-block">
-		        </div>
-
-		        <div class="swiper-slide">
-		        	<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive center-block">
-		        </div>
-
-		        <div class="swiper-slide">
-		        	<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive center-block">
-		        </div>
-
-		        <div class="swiper-slide">
-		        	<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive center-block">
-		        </div>
-
-		        <div class="swiper-slide">
-		        	<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive center-block">
-		        </div>
-
-		        <div class="swiper-slide">
-		        	<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive center-block">
-		        </div>
-
-		        <div class="swiper-slide">
-		        	<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive center-block">
-		        </div>
-		    </div>
-		    <!-- If we need pagination -->
-		    <div class="swiper-pagination"></div>
-		    
-		    <!-- If we need navigation buttons -->
-		    <div class="swiper-button-prev"></div>
-		    <div class="swiper-button-next"></div>
-		    
-		    <!-- If we need scrollbar -->
-		    <div class="swiper-scrollbar"></div>
-		</div>
-	</section>
 </section>
+
+<?php
+	get_template_part('brands');
+?>
 
 </div>
 

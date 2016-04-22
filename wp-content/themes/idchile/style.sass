@@ -56,12 +56,22 @@ $general_font: 'Open Sans', sans-serif
   -webkit-transform: $transform
   transform: $transform
 
-@mixin animation($transition...)
-  -moz-transition: $transition
-  -o-transition: $transition
-  -ms-transition: $transition
-  -webkit-transition: $transition
-  transition: $transition
+@mixin keyframes($name)
+  @-o-keyframes $name
+    @content
+  @-moz-keyframes $name
+    @content
+  @-webkit-keyframes $name
+    @content
+  @-keyframes $name
+    @content
+
+@mixin animation($str)
+  -webkit-animation: $str
+  -moz-animation: $str
+  -ms-animation: $str
+  -o-animation: $str
+  animation: $str
 
 /* General Styles */
 body
@@ -85,6 +95,7 @@ body
     .permalink
       color: $color_text
       font-size: 14px
+      font-weight: 400
       @extend .removeStyleTagA
 
 .nav-menu
@@ -124,11 +135,8 @@ body
 
 .banner
   .wrap-static-slide
-    max-height: 335px
-    height: 335px
     background-color: #ffba00
   .wrap-sliders
-    height: 548px
     background-color: #fec500
   .line_bottom
     border-top: 15px solid #ffde00
@@ -224,10 +232,12 @@ div.box-service
     font-size: 25px
     margin: 0px
     @extend .uppercase
+    color: #6b6b6b
   & h3
     font-size: 20px
     margin: 0px
     display: inline-block
+    color: #6b6b6b
     @extend .uppercase
   .ul-inline
     display: inline-block
@@ -240,12 +250,13 @@ div.box-service
       padding-left: 0px
       padding-right: 5px
       margin-right: 5px
-      border-right: 1px solid $color_text
+      border-right: 2px solid #acacac
       @extend .removeStyleTagA
       @include transition(color 1s)
       @extend .font-family
       @extend .uppercase
-      color: $color_text
+      color: #acacac
+      font-weight: 400
       &:hover
         color: #00adef
     & li:last-child a
@@ -255,6 +266,10 @@ div.box-service
 
 .productos_block
   margin-top: 115px
+  .dropdown-category
+    background-color: #00ADEF
+    color: #FFF
+    font-weight: 600
 
 .wrap_products
   margin-top: 65px
@@ -266,14 +281,75 @@ div.box-service
     position: relative
     @include transition(border .5s)
     @include box-shadow(0px 5px 10px -4px #ececec)
+    &.single-product
+      figure
+        overflow: initial
     &
       figure
         overflow: hidden
-        img
-          @include transform(scale(1))
-          @include transition(transform .5s)
+        position: relative
+        .figcaption
+          padding: 10px 15px 20px
+          *
+            margin: 0px
+            color: #acacac
+            @extend .font-family
+            font-size: 25px
+            font-weight: bold
+          .price
+            color: #00adef
+            *
+              color: #00adef
+        &.fixImage
+          > a
+            background-position: center center
+            background-size: cover
+            background-repeat: no-repeat
+          .wrap-img-product
+            img
+              opacity: 0
+        span.tag-on-sale
+          position: absolute
+          top: 10px
+          left: -10px
+          padding: 5px
+          background-color: #008fc4
+          border-color: #008fc4
+          color: #FFF
+          text-transform: capitalize
+          z-index: 1
+          text-indent: 15px
+          font-weight: bold
+          box-shadow: 5px 3px 10px -2px #000
+          &::before
+            content: ""
+            display: block
+            border-width: 5px
+            border-color: inherit
+            position: absolute
+            left: 0
+            top: -10px
+            border-style: solid
+            border-top-color: transparent
+            border-left-color: transparent
+          &::after
+            content: ""
+            position: absolute
+            z-index: -1
+            height: 100%
+            width: 30px
+            right: -15px
+            top: 0
+            display: block
+            background-color: inherit
+            border-radius: 0 30% 30% 0
+        .wrap-img-product
+          overflow: hidden
+          img
+            @include transform(scale(1))
+            @include transition(transform .5s)
     &:hover
-      figure > img
+      .wrap-img-product > img
         @include transform(scale(1.1))
     &.selectable-compared
       cursor: pointer
@@ -329,28 +405,29 @@ div.box-service
             width: 100%
             font-size: 2rem
             @include transform(translateY(-50%))
-        .heart
-          background-color: #acacac
-          i
-            &:hover
-              &:after
-                display: block
-              &:before
-                display: none
-            &:after
-              content: "\e005" !important
-              color: red
-              display: none
-        .save
-          background-color: #faa21b
-          i
             &:hover
               color: #00ADEF
+        .heart
+          background-color: #acacac
+        .save
+          background-color: #faa21b
 
 .brands-block
   margin-top: 115px
   .wrap-carousel
     border: 1px solid #ebebeb
+    padding: 70px 0px
+    .icon-prev, .icon-next
+      position: absolute
+      top: 20%
+      font-size: 3.5rem
+      color: #faa21b
+      z-index: 2
+      cursor: pointer
+    .icon-prev
+      left: 0
+    .icon-next
+      right: 0
   .title-brand
     h2
       @extend .uppercase
@@ -358,12 +435,15 @@ div.box-service
       font-size: 25px
       margin: 0px 0px 25px 0px
       padding: 0px
+      color: #6b6b6b
+      font-weight: 600
   .brand-info
     max-width: 550px
     margin: 0 auto
     p
       @extend .p
-
+      color: #6b6b6b
+      font-weight: 600
 .border
   border: 1px solid black
 
@@ -454,9 +534,13 @@ div.box-service
     max-width: 85px
     width: 100%
     height: 42px
-    border: 1px solid #4f565b
     color: #6b6b6b
+    @include transition(background-color .5s, color .4s)
     @extend .uppercase
+    border: 1px solid #4f565b
+    &:hover
+      background-color: #00ADEF
+      color: #FFF
 
 .all-products-block
   padding-top: 120px
@@ -509,7 +593,7 @@ div.box-service
       width: 100%
       margin: 0 auto
       .figcaption
-        padding: 0px 15px 20px
+        padding: 10px 15px 20px
         *
           margin: 0px
           color: #acacac
@@ -542,7 +626,7 @@ div.box-service
           padding: 0px 15px
         .optionBuy
           > div:first-child
-            margin-bottom: 25px
+            margin-bottom: 0px
         .features
           border-top: 1px solid #acacac
           border-bottom: 1px solid #acacac
@@ -552,107 +636,57 @@ div.box-service
 
 // Media Queries for Devices
 
-@media only screen and (max-device-width: $ipads) and (orientation: portrait)
+@media only screen and (min-device-width: 320px) and (max-device-width: 736px) and (orientation: landscape)
+  .nosotros_block, .servicios_block, .productos_block, .brands-block, .footer-block
+    margin-top: 25px
   .nosotros_block
-    .picture
-      padding-right: 15px
-
-  .nosotros_block
-    .info_company
-      padding-left: 15px
-      p
-        font-size: 14px
-      .title_company
-        font-size: 18px
-        margin-bottom: 10px
-
+    .flex
+      display: block
+      .picture
+        padding-right: 15px
+      .info_company
+        padding-left: 15px
+        margin-top: 20px
   .servicios_block
-    .text-box
-      max-width: none
     .box-service
-      margin-bottom: 20px
-      &:last-child
-        margin-bottom: 0px
-      .text-service
-        max-width: none
-
+      padding: 0px 15px
+      margin-top: 20px
+      &:first-child
+        margin-top: 0px
+      .column-service
+        @include box-shadow(0px 2px 10px 2px rgba(0, 0, 0, .4))
+    .text-service
+      max-width: none
+      margin-top: 15px
+      h2
+        font-weight: 600
   .productos_block
+    .wrap_products
+      margin-top: 20px
+      > div
+        width: 50%
     .box-title
-      h2, h3
-        font-size: 16px
-      .ul-inline
-        font-size: 14px
+      width: 40%
+      &:first-child
+        width: 60%
+      .ul-submenu
+        right: 0
   .footer-block
     margin-top: 20px
     .footer-section
       height: auto
       .wrap-footer
-        top: 0px
+        top: 0
         @include transform(translateY(0%))
         .elements-box
-          & > div
-            margin: 10px 0px
+          > div:first-child
+            margin-bottom: 20px
           .address
             max-width: none
-        .form-block
-          .form-group
-            margin: 0px
-      .wrap-form-title
-        .form-title
-          margin: 20px 0px 10px
-    .subfooter
-      height: auto
-      padding: 10px 0px
-      .copyright
-        position: relative
-        top: 0px
-        @include transform(translateY(0%))
-
-@media only screen and (max-device-width: $smartphonesPortrait)
-  .nosotros_block
-    margin-top: 20px
-    .flex
-      display: block
-      .info_company
-        margin-top: 20px
-  .servicios_block, .productos_block
-    margin-top: 20px
-    padding-top: 20px
-    border-top: 2px solid $color_text
-    .wrap_products
-      & > div
-        margin: 15px 0px 0px 0px
-        &:first-child
-          margin: 0px
-  .brands-block
-    margin-top: 20px
-  .footer-block
-    .subfooter
-      font-size: 100%
-      .copyright
-        font-size: 1.3rem
-
-@media only screen and (max-device-width: $smartphonesLandscape) and (min-device-width: 567px) and (orientation: landscape)
-  .productos_block
-    .wrap_products
-      & > div
-        width: 50%
-
-@media only screen and (max-device-width: $smartphonesLandscape) and (orientation: landscape)
-  .nosotros_block
-    margin-top: 20px
-    .flex
-      display: block
-      & > div
-        padding: 0px 15px
-      .picture
-        margin-bottom: 20px
-  .servicios_block, .productos_block, .brands-block
-    margin-top: 40px
-  .productos_block
-    .wrap_products
-      & > div
-        margin-bottom: 15px
-        &:last-child
-          margin-bottom: 0px
-// Media Queries for PC, laptops
+            .phone-number
+              a
+                color: #FFF
+                text-decoration: none
+    .wrap-form-title
+      .form-title
+        margin: 15px 0px
