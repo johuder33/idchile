@@ -21,8 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $template = get_option( 'template' );
 
-print_r($template);
-
 switch( $template ) {
 	case 'twentyeleven' :
 		echo '</div></div>';

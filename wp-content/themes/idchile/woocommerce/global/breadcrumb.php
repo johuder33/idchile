@@ -42,6 +42,6 @@ if ( ! empty( $breadcrumb ) ) {
 
 	}
 
-	echo $wrap_after;
+	//echo $wrap_after;
 
 }

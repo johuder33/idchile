@@ -19,7 +19,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-get_header( 'shop' ); ?>
+get_header( 'shop' ); 
+
+get_template_part('banner');
+
+//echo sprintf('<a href="%s">Add to cart</a>', do_shortcode('[add_to_cart_url id="99"]'));
+
+?>
 
 	<?php
 		/**
@@ -63,11 +69,37 @@ get_header( 'shop' ); ?>
 
 				<?php woocommerce_product_subcategories(); ?>
 
+				<?php $loop = 1; ?>
+
 				<?php while ( have_posts() ) : the_post(); ?>
+					
+					<?php
+
+					if($loop % 4 == 1){
+						echo "<div class='row'>";
+					}
+
+					?>
 
 					<?php wc_get_template_part( 'content', 'product' ); ?>
 
+					<?php
+
+					if($loop % 4 == 0){
+						echo "</div>";
+					}
+
+					?>
+
+					<?php $loop++; ?>
+
 				<?php endwhile; // end of the loop. ?>
+
+				<?php 
+					if($loop % 4 != 1){
+						echo "</div>";
+					}
+				?>
 
 			<?php woocommerce_product_loop_end(); ?>
 
@@ -101,7 +133,7 @@ get_header( 'shop' ); ?>
 		 *
 		 * @hooked woocommerce_get_sidebar - 10
 		 */
-		do_action( 'woocommerce_sidebar' );
+		//do_action( 'woocommerce_sidebar' );
 	?>
 
 <?php get_footer( 'shop' ); ?>

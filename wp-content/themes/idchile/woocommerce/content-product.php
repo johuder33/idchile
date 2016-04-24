@@ -47,9 +47,12 @@ if ( 0 === ( $woocommerce_loop['loop'] - 1 ) % $woocommerce_loop['columns'] || 1
 if ( 0 === $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 	$classes[] = 'last';
 }
+
+//post_class( $classes );
+	
 ?>
 
-<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 <?php post_class( $classes ); ?>">
+<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 
 	<?php
 	/**
@@ -65,14 +68,14 @@ if ( 0 === $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 	 * @hooked woocommerce_show_product_loop_sale_flash - 10
 	 * @hooked woocommerce_template_loop_product_thumbnail - 10
 	 */
-	do_action( 'woocommerce_before_shop_loop_item_title' );
+	do_action( 'woocommerce_before_shop_loop_item_title' ); // Ready *
 
 	/**
 	 * woocommerce_shop_loop_item_title hook.
 	 *
 	 * @hooked woocommerce_template_loop_product_title - 10
 	 */
-	do_action( 'woocommerce_shop_loop_item_title' );
+	do_action( 'woocommerce_shop_loop_item_title' ); // Ready *
 
 	/**
 	 * woocommerce_after_shop_loop_item_title hook.

@@ -1,6 +1,6 @@
 <?php
 
-global $post;
+global $product;
 
 ?>
 <div class="controls-box">
@@ -10,7 +10,7 @@ global $post;
 
 	<div class="subControls">
 		<div class="heart">
-			<i class="glyphicon glyphicon-shopping-cart"></i>
+			<i class="glyphicon glyphicon-shopping-cart wcustom-add-to-cart" data-id="<?php echo $product->id; ?>" data-sku="<?php echo $product->get_sku(); ?>" data-qty="1"></i>
 		</div>
 		<div class="save">
 			<i class="glyphicon glyphicon-save-file"></i>

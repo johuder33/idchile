@@ -122,25 +122,56 @@ function wcustom_get_template($template_name, $part_name=null) {
     return $var;
 }
 
-/*<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-					<article class="product-box" data-id="<?php print $i; ?>">
-						<figure>
-							<img src="<?php bloginfo('template_url'); ?>/assets/images/product.png" alt="Producto" title="Producto" class="img-responsive">
-						</figure>
+add_action('custom_pagination_wc', 'custom_pagination_before_tag', 10);
+add_action('custom_pagination_wc', 'custom_pagination', 20);
+add_action('custom_pagination_wc', 'custom_pagination_after_tag', 30);
 
-						<div class="controls-box">
-							<div class="view">
-								<a href="!#">Ver Más</a>
-							</div>
+function custom_pagination_before_tag(){
+	echo '<div class="row"><nav class="wrap-pagination text-center">';
+}
 
-							<div class="subControls">
-								<div class="heart"></div>
-								<div class="save"></div>
-							</div>
-						</div>
+function custom_pagination() {
+    global $wp_query;
 
-						<span class="glyphicon glyphicon-ok icon"></span>
-					</article>
-				</div>*/
+    $big = 999999999; // need an unlikely integer
+    $pages = paginate_links( array(
+      'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+      'format' => '?paged=%#%',
+      'current' => max( 1, get_query_var('paged') ),
+      'total' => $wp_query->max_num_pages,
+      'prev_next' => false,
+      'type'  => 'array',
+      'prev_next'   => TRUE,
+			'prev_text'    => __('<i class="glyphicon glyphicon-chevron-left"></i>'),
+			'next_text'    => __('<i class="glyphicon glyphicon-chevron-right"></i>'),
+    ) );
+
+    if( is_array( $pages )  && count($pages) > 0) {
+      $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+
+      echo '<ul class="pagination">';
+        foreach ( $pages as $page ) {
+        	if(strpos($page, 'current')){
+        		$currentPage = str_replace('current', 'disabled', $page);
+        		$link = "<li class='active'>$currentPage</li>";
+        	}else{
+        		$link = "<li>$page</li>";
+        	}
+        	echo $link;
+        }
+     	echo '</ul>';
+    }
+}
+
+function custom_pagination_after_tag(){
+	echo '</nav></div>';
+}
+
+// limit how many products will be shown in th store page
+add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 8;' ), 20 );
+
+// shorcode to show add to cart button
+//echo do_shortcode('[add_to_cart id="99"]');
+// shorcode to show add to cart button
 
 ?>
