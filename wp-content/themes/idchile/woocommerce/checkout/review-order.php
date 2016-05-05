@@ -19,6 +19,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
+
+<?php
+/*
+?>
+
 <table class="shop_table woocommerce-checkout-review-order-table">
 	<thead>
 		<tr>
@@ -110,3 +115,79 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</tfoot>
 </table>
+
+<?php
+*/
+?>
+
+<div class="container-table">
+	<div class="clearfix row-header">
+		<div class="col-xs-10">
+			<h4>
+				<?php _e( 'Product', 'woocommerce' ); ?>
+			</h4>
+		</div>
+		<div class="col-xs-2 text-right">
+			<h4>
+				<?php _e( 'Total', 'woocommerce' ); ?>
+			</h4>
+		</div>
+	</div>
+
+	<?php
+			do_action( 'woocommerce_review_order_before_cart_contents' );
+
+			foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+				$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+
+				if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
+					?>
+						<div class="clearfix block-separator">
+							<div class="col-xs-10 <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
+								<?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key ) . '&nbsp;'; ?>
+								<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?>
+								<?php echo WC()->cart->get_item_data( $cart_item ); ?>
+							</div>
+							<div class="col-xs-2 text-right">
+								<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); ?>
+							</div>
+						</div>
+					<?php
+				}
+			}
+
+			do_action( 'woocommerce_review_order_after_cart_contents' );
+		?>
+</div>
+
+<div class="total-spends">
+	<div class="clearfix block-separator">
+		<div class="col-xs-10">
+			<strong>
+				<?php _e( 'Subtotal', 'woocommerce' ); ?>
+			</strong>
+		</div>
+		<div class="col-xs-2 text-right">
+			<strong>
+				<?php wc_cart_totals_subtotal_html(); ?>
+			</strong>
+		</div>
+	</div>
+
+	<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
+
+	<div class="clearfix block-separator">
+		<div class="col-xs-10">
+			<strong>
+				<?php _e( 'Total', 'woocommerce' ); ?>
+			</strong>
+		</div>
+		<div class="col-xs-2 text-right">
+			<strong>
+				<?php wc_cart_totals_order_total_html(); ?>
+			</strong>
+		</div>
+	</div>
+
+	<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
+</div>

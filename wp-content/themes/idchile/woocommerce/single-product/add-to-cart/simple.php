@@ -30,14 +30,41 @@ if ( ! $product->is_purchasable() ) {
 <?php
 	// Availability
 	$availability      = $product->get_availability();
-	$availability_html = empty( $availability['availability'] ) ? '' : '<p class="stock ' . esc_attr( $availability['class'] ) . '">' . esc_html( $availability['availability'] ) . '</p>';
+	$availability_html = empty( $availability['availability'] ) ? '' : '<span class="stock ' . esc_attr( $availability['class'] ) . '">' . esc_html( $availability['availability'] ) . '</span>';
 
-	echo apply_filters( 'woocommerce_stock_html', $availability_html, $availability['availability'], $product );
+	//echo apply_filters( 'woocommerce_stock_html', $availability_html, $availability['availability'], $product );
 ?>
 
-<?php if ( $product->is_in_stock() ) : ?>
+<?php
+if ($product->is_in_stock() || !empty(get_the_content())) {
+	?>
+		<div class="attr-item info-attr">
+
+		<?php if ($product->is_in_stock()) : ?>
+			<article class="state">
+				<span>Disponibilidad:</span> <?php echo apply_filters( 'woocommerce_stock_html', $availability_html, $availability['availability'], $product ); ?>
+			</article>
+		<?php endif; ?>
+
+		<?php	if (!empty(get_the_content())) : ?>
+			<article class="description-product">
+				<div>DESCRIPCIÓN DEL PRODUCTO</div>
+				<div class="paragraph-product text-justify">
+					<?php the_content(); ?>
+				</div>
+			</article>
+		<?php endif; ?>
+
+		</div>
+	<?php
+} 
+
+?>
+
+<?php /*if ( $product->is_in_stock() ) : ?>
 
 	<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
+	<?php echo get_the_content(); ?>
 
 	<form class="cart" method="post" enctype='multipart/form-data'>
 	 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
@@ -61,4 +88,4 @@ if ( ! $product->is_purchasable() ) {
 
 	<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
 
-<?php endif; ?>
+<?php endif;*/ ?>

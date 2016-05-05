@@ -20,4 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<h1 itemprop="name" class="product_title entry-title"><?php the_title(); ?></h1>
+
+<div class="attr-item title-attr">
+	<h1><?php the_title(); ?></h1>
+	<span class="hr-border"></span>
+</div>

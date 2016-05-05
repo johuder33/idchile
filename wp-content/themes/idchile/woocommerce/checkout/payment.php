@@ -17,7 +17,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
+echo apply_filters( 'woocommerce_order_button_html', '<input type="submit" class="btn btn-custom col-xs-12 uppercase btn-make-checkout" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />' );
+/*
 if ( ! is_ajax() ) {
 	do_action( 'woocommerce_review_order_before_payment' );
 }
@@ -56,4 +57,4 @@ if ( ! is_ajax() ) {
 <?php
 if ( ! is_ajax() ) {
 	do_action( 'woocommerce_review_order_after_payment' );
-}
+}*/

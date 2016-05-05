@@ -41,7 +41,5 @@ if ( ! empty( $breadcrumb ) ) {
 		}
 
 	}
-
 	//echo $wrap_after;
-
 }

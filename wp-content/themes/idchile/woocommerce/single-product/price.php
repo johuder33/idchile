@@ -21,10 +21,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
-?>
-<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+$isHide = empty($product->get_price_html()) ? 'hide' : 'show';
 
-	<p class="price"><?php echo $product->get_price_html(); ?></p>
+?>
+<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="figcaption <?php echo $isHide; ?>">
+
+	<span class="price"><?php echo $product->get_price_html(); ?></span>
 
 	<meta itemprop="price" content="<?php echo esc_attr( $product->get_price() ); ?>" />
 	<meta itemprop="priceCurrency" content="<?php echo esc_attr( get_woocommerce_currency() ); ?>" />

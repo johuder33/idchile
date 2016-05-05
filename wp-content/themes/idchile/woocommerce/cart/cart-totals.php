@@ -19,15 +19,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-?>
-<div class="cart_totals <?php if ( WC()->customer->has_calculated_shipping() ) echo 'calculated_shipping'; ?>">
+/*<div class="cart_totals <?php if ( WC()->customer->has_calculated_shipping() ) echo 'calculated_shipping'; ?>">
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
 	<h2><?php _e( 'Cart Totals', 'woocommerce' ); ?></h2>
 
-	<table cellspacing="0" class="shop_table shop_table_responsive">
 
+
+	<div class="wc-proceed-to-checkout">
+		<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
+	</div>
+
+	<?php do_action( 'woocommerce_after_cart_totals' ); ?>
+
+</div>*/
+?>
+
+	<table cellspacing="0" class="shop_table shop_table_responsive table" style="border: 1px solid blue;">
 		<tr class="cart-subtotal">
 			<th><?php _e( 'Subtotal', 'woocommerce' ); ?></th>
 			<td data-title="<?php _e( 'Subtotal', 'woocommerce' ); ?>"><?php wc_cart_totals_subtotal_html(); ?></td>
@@ -93,13 +102,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</tr>
 
 		<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
-
-	</table>
-
-	<div class="wc-proceed-to-checkout">
-		<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
-	</div>
-
-	<?php do_action( 'woocommerce_after_cart_totals' ); ?>
-
-</div>
+</table>

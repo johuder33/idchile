@@ -18,7 +18,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
+/*
 if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_login_reminder' ) ) {
 	return;
 }
@@ -35,5 +35,5 @@ wc_print_notice( $info_message, 'notice' );
 			'redirect' => wc_get_page_permalink( 'checkout' ),
 			'hidden'   => true
 		)
-	);
+	);*/
 ?>

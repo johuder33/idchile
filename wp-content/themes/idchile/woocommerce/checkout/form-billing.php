@@ -20,30 +20,43 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /** @global WC_Checkout $checkout */
-
 ?>
-<div class="woocommerce-billing-fields">
+<div class="woocommerce-billing-fields row">
 	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
-		<h3><?php _e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
+		<h3 class="col-xs-12"><?php _e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
 
 	<?php else : ?>
 
-		<h3><?php _e( 'Billing Details', 'woocommerce' ); ?></h3>
+		<h3 class="col-xs-12"><?php _e( 'Billing Details', 'woocommerce' ); ?></h3>
 
 	<?php endif; ?>
 
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
-	<?php foreach ( $checkout->checkout_fields['billing'] as $key => $field ) : ?>
+	<?php
+		$reordered_billing_fields = array(
+			'billing_first_name',
+			'billing_last_name',
+			'billing_company',
+			'billing_email',
+			'billing_phone',
+			'billing_address_1',
+			'billing_address_2',
+			'billing_city',
+			'billing_postcode',
+			'billing_country',
+			'billing_state'
+		);
 
-		<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
-
-	<?php endforeach; ?>
+		foreach($reordered_billing_fields as $key) {
+			woocommerce_form_field( $key, $checkout->checkout_fields['billing'][$key], $checkout->get_value( $key ) );
+		}
+	?>
 
 	<?php do_action('woocommerce_after_checkout_billing_form', $checkout ); ?>
 
-	<?php if ( ! is_user_logged_in() && $checkout->enable_signup ) : ?>
+	<?php /*if ( ! is_user_logged_in() && $checkout->enable_signup ) : ?>
 
 		<?php if ( $checkout->enable_guest_checkout ) : ?>
 
@@ -75,5 +88,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
 
-	<?php endif; ?>
+	<?php endif;*/ ?>
 </div>

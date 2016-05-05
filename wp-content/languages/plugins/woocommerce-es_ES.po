@@ -1743,7 +1743,7 @@ msgstr "Borrar este artículo"
 
 #: templates/cart/cart.php:136 templates/checkout/form-coupon.php:39
 msgid "Apply Coupon"
-msgstr "Aplicar cupón"
+msgstr "Cupón de descuento"
 
 #: templates/cart/cart.php:142
 msgid "Update Cart"

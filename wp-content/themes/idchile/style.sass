@@ -177,8 +177,9 @@ body
   .picture
     padding-right: 50px
   .info_company
-    padding-left: 50px
     color: $color_text
+  .info_company:not(.only_info_company)
+    padding-left: 50px
 
 
 h3.title_company, .title_company
@@ -433,8 +434,9 @@ div.box-service
           text-align: center
           cursor: pointer
           position: relative
-          i
+          .icon-item
             position: relative
+            color: #FFF
             top: 50%
             display: block
             width: 100%
@@ -472,6 +474,9 @@ div.box-service
           background-color: #faa21b
         i.fa-spin
           top: 30%
+        &.noFile
+          div
+            width: 100%
 
 .brands-block
   margin-top: 115px
@@ -610,10 +615,14 @@ div.box-service
     @extend .uppercase
     font-weight: normal
     color: #898989
-    h1, h2, h3, h4, h5, h6, ul.ul-inline
-      display: inline-block
-      font-size: 20px
-      font-weight: normal
+    .container-cat
+      margin-bottom: 5px
+      h1, h2, h3, h4, h5, h6, ul.ul-inline
+        display: inline-block
+        font-size: 20px
+        margin: 0
+        line-height: 1
+        font-weight: normal
     .controls
       font-size: 20px
       .wrap-form
@@ -666,6 +675,8 @@ div.box-service
       .controls-box
         .view
           width: 75%
+          &.noFile
+            width: 100%
   .list-attr-item
     .attr-item
       @extend .font-family
@@ -683,6 +694,8 @@ div.box-service
             color: #00adef
       &.brand-attr
         padding-top: 25px
+        .pointer
+          cursor: pointer
         .text-line
           padding: 0px 15px
         .optionBuy
@@ -691,9 +704,11 @@ div.box-service
         .features
           border-top: 1px solid #acacac
           border-bottom: 1px solid #acacac
-          padding: 15px 0px
+          padding: 0px
           color: #666666
           @extend .uppercase
+          span.text-inline
+            padding: 15px
 
 // Media Queries for Devices
 
@@ -751,3 +766,76 @@ div.box-service
     .wrap-form-title
       .form-title
         margin: 15px 0px
+
+.woocommerce-error
+  margin-top: 100px
+
+.container-table
+  border: 1px solid #d2d2d2
+  .row-item
+    padding: 10px 0
+
+.row-header
+  background-color: #d2d2d2
+  color: #FFF
+
+.btn-custom
+  background-color: #ffbb00
+  color: #FFF
+  border-radius: 0
+
+  &:hover
+    color: #FFF
+    opacity: .9
+
+.margin-right
+  margin-right: 10px
+
+.block-coupon
+  padding: 40px 0
+
+.divider-top
+  border-top: 1px solid #d2d2d2
+
+.custom-link
+  color: #ffbb00
+  background-color: transparent
+  border-radius: 0
+  border: none
+  font-weight: bold
+
+label.custom-require
+  color: $color_text
+  .required
+    color: #ffbb00 !important
+
+.total-spends
+  margin-top: 20px
+  border: 1px solid #d2d2d2
+  color: #6b6b6b
+
+.block-separator
+  padding: 15px 0
+  border-top: 1px solid #d2d2d2
+
+  &:first-child
+    border-top: 0
+
+.btn-make-checkout
+  padding: 15px 0
+
+  &:hover
+    color: #FFF
+    opacity: .9
+
+.no-resize
+  resize: none
+
+.woocommerce
+  form
+    .form-row
+      textarea
+        height: 100px
+
+.margin-top
+  margin-top: 100px

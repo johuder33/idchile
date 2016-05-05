@@ -36,18 +36,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
-
+	<section class="row single-product-block">
+		<div class="wrap_products clearfix">
 	<?php
-		/**
-		 * woocommerce_before_single_product_summary hook.
-		 *
-		 * @hooked woocommerce_show_product_sale_flash - 10
-		 * @hooked woocommerce_show_product_images - 20
-		 */
-		//do_action( 'woocommerce_before_single_product_summary' );
-	?>
+			do_action( 'wc_custom_before_column_image_product' );
+				do_action( 'wc_custom_open_container_image_product' );
+					do_action( 'wc_custom_combo_image_product' );
+				do_action( 'wc_custom_close_container_image_product' );
 
-	<div class="summary entry-summary">
+				do_action( 'wc_custom_controlbox_single_product' );
+			do_action( 'wc_custom_after_column_image_product' );
+
+			do_action( 'wc_custom_before_summary_image_product' );
+				do_action( 'wc_custom_title_summary_single_product' );
+				do_action( 'wc_custom_list-attributes_image_product' );
+			do_action( 'wc_custom_after_summary_image_product' );
+	?>
 
 		<?php
 			/**
@@ -61,10 +65,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			 * @hooked woocommerce_template_single_meta - 40
 			 * @hooked woocommerce_template_single_sharing - 50
 			 */
-			do_action( 'woocommerce_single_product_summary' );
+			//do_action( 'woocommerce_single_product_summary' );
 		?>
-
-	</div><!-- .summary -->
 
 	<?php
 		/**
@@ -74,11 +76,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 * @hooked woocommerce_upsell_display - 15
 		 * @hooked woocommerce_output_related_products - 20
 		 */
-		do_action( 'woocommerce_after_single_product_summary' );
+		//do_action( 'woocommerce_after_single_product_summary' );
 	?>
 
 	<meta itemprop="url" content="<?php the_permalink(); ?>" />
-
+		</div>
+	</section>
+<?php get_template_part('brands'); ?>
 </div><!-- #product-<?php the_ID(); ?> -->
-
 <?php do_action( 'woocommerce_after_single_product' ); ?>

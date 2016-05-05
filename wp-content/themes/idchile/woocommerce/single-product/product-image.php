@@ -21,33 +21,51 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $post, $woocommerce, $product;
 
+if ( has_post_thumbnail() ) {
+	$image_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
+	$image_link    = wp_get_attachment_url( get_post_thumbnail_id() );
+	/*$image         = get_the_post_thumbnail( $post->ID, apply_filters( 'single_product_large_thumbnail_size', 'shop_single' ), array(
+		'title'	=> get_the_title( get_post_thumbnail_id() )
+	) );*/
+
+	$attachment_count = count( $product->get_gallery_attachment_ids() );
+
+	/*if ( $attachment_count > 0 ) {
+		$gallery = '[product-gallery]';
+	} else {
+		$gallery = '';
+	}*/
+
+} else {
+	$image_link = wc_placeholder_img_src();
+}
+
+//do_action( 'woocommerce_product_thumbnails' );
+
 ?>
-<div class="images">
-	<h1>Miercoles</h1>
-	<?php
-		if ( has_post_thumbnail() ) {
-			$image_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
-			$image_link    = wp_get_attachment_url( get_post_thumbnail_id() );
-			$image         = get_the_post_thumbnail( $post->ID, apply_filters( 'single_product_large_thumbnail_size', 'shop_single' ), array(
-				'title'	=> get_the_title( get_post_thumbnail_id() )
-			) );
 
-			$attachment_count = count( $product->get_gallery_attachment_ids() );
+<img src="<?php echo $image_link; ?>" alt="<?php echo $image_caption; ?>" title="<?php echo $image_caption; ?>" class="img-responsive center-block">
 
-			if ( $attachment_count > 0 ) {
-				$gallery = '[product-gallery]';
-			} else {
-				$gallery = '';
-			}
+<!--<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+	<article class="product-box product-elastic-box">
+		
+		<figure>
+			<img src="<?php echo $image_link; ?>" alt="<?php echo $image_caption; ?>" title="<?php echo $image_caption; ?>" class="img-responsive center-block">
+			<figcaption class="figcaption">
+				<h2>Sed Ut Perspiciatis</h2>
+				<span class="price">$680.00</span>
+			</figcaption>
+		</figure>
 
-			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<a href="%s" itemprop="image" class="woocommerce-main-image zoom" title="%s" data-rel="prettyPhoto' . $gallery . '">%s</a>', $image_link, $image_caption, $image ), $post->ID );
+		<div class="controls-box">
+			<div class="view">
+				<a href="!#">Ver Más</a>
+			</div>
 
-		} else {
-
-			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<img src="%s" alt="%s" />', wc_placeholder_img_src(), __( 'Placeholder', 'woocommerce' ) ), $post->ID );
-
-		}
-	?>
-
-	<?php do_action( 'woocommerce_product_thumbnails' ); ?>
-</div>
+			<div class="subControls">
+				<div class="heart"></div>
+				<div class="save"></div>
+			</div>
+		</div>
+	</article>
+</div>-->

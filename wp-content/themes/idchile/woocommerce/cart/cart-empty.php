@@ -23,14 +23,19 @@ wc_print_notices();
 
 ?>
 
-<p class="cart-empty">
-	<?php _e( 'Your cart is currently empty.', 'woocommerce' ) ?>
-</p>
+<section class="s">
+	<div class="alert alert-danger" role="alert">
+		<p class="cart-empty clearfix">
+			<strong>
+				<?php _e( 'Your cart is currently empty.', 'woocommerce' ) ?>
+			</strong>
+
+			<a href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>" class="btn btn-primary pull-right btn-xs">
+				<?php _e( 'Return To Shop', 'woocommerce' ) ?>
+			</a>
+		</p>
+	</div>
+</section>
+
 
 <?php do_action( 'woocommerce_cart_is_empty' ); ?>
-
-<p class="return-to-shop">
-	<a class="button wc-backward" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
-		<?php _e( 'Return To Shop', 'woocommerce' ) ?>
-	</a>
-</p>

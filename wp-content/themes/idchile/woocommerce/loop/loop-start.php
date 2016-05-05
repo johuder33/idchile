@@ -16,4 +16,4 @@
  */
 ?>
 <div class="row">
-		<section class="wrap_products">
+	<section class="col-xs-12 wrap_products">

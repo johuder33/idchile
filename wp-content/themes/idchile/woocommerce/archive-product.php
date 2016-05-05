@@ -19,11 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-get_header( 'shop' ); 
+get_header(); 
 
 get_template_part('banner');
-
-//echo sprintf('<a href="%s">Add to cart</a>', do_shortcode('[add_to_cart_url id="99"]'));
 
 ?>
 
@@ -37,7 +35,7 @@ get_template_part('banner');
 		do_action( 'woocommerce_before_main_content' );
 	?>
 
-		<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+		<?php if ( apply_filters( 'woocommerce_show_page_title', false ) ) : ?>
 
 			<h1 class="page-title"><?php woocommerce_page_title(); ?></h1>
 
@@ -68,7 +66,6 @@ get_template_part('banner');
 			<?php woocommerce_product_loop_start(); ?>
 
 				<?php woocommerce_product_subcategories(); ?>
-
 				<?php $loop = 1; ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -100,7 +97,6 @@ get_template_part('banner');
 						echo "</div>";
 					}
 				?>
-
 			<?php woocommerce_product_loop_end(); ?>
 
 			<?php

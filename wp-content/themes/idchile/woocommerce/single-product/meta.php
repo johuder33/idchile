@@ -26,6 +26,7 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 
 ?>
 <div class="product_meta">
+	META
 
 	<?php do_action( 'woocommerce_product_meta_start' ); ?>
 

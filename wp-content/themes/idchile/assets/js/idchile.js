@@ -1,6 +1,4 @@
 jQuery(document).ready(function($){
-	// encapsulate the vars
-
 	$('body').on('click', '.wcustom-add-to-cart', function(){
 		var data = $(this).data();
 
@@ -15,6 +13,7 @@ jQuery(document).ready(function($){
 				success: function(data){
 					changeStates(this);
 					$(this).data('adding', false);
+					$('.currentTotalCart').html(data.fragments.currentTotal);
 				},
 				beforeSend: function(){
 					$(this).data('adding', true);
@@ -53,6 +52,31 @@ jQuery(document).ready(function($){
     speed: 1000,
   });
 
+  $('.permalink').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash.replace('!', ''));
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        //return false;
+      }
+    }
+  });
+
+  if(window.location.hash) {
+  	var target = $(window.location.hash.replace('!', ''));
+    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+    if (target.length) {
+      $('html, body').animate({
+        scrollTop: target.offset().top
+      }, 1000);
+      //return false;
+    }
+  }
+
+	// encapsulate the vars
 	(function(){
 		var elements = [];
 		var limit = 2;

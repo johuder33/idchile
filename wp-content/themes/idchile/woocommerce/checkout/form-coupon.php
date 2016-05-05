@@ -18,7 +18,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
+/*
 if ( ! wc_coupons_enabled() ) {
 	return;
 }
@@ -41,3 +41,8 @@ if ( ! WC()->cart->applied_coupons ) {
 
 	<div class="clear"></div>
 </form>
+<?php
+
+*/
+
+?>

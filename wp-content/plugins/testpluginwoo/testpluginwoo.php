@@ -6,21 +6,7 @@
  * Author: Juorder Gonzalez
  * Author URI: http://www.machinesoft.com
  * Version: 1.0
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- */
+ **/
 class WP_swiper_slideshow {
     /**
      * Bootstraps the class and hooks required actions & filters.
@@ -30,15 +16,31 @@ class WP_swiper_slideshow {
         add_filter( 'woocommerce_settings_tabs_array', __CLASS__ . '::add_settings_tab', 50 );
         add_action( 'woocommerce_settings_tabs_settings_tab_demo', __CLASS__ . '::settings_tab' );
         add_action( 'woocommerce_update_options_settings_tab_demo', __CLASS__ . '::update_settings' );
-        add_action( 'admin_menu', __CLASS__.'::mi_menu' );
-    }
-    
-    public static function mi_menu(){
-        add_menu_page('Primer param', 'Segundo param', 'manage_options', 'test_echo');
+        add_action( 'admin_menu', __CLASS__.'::add_menu_link' );
+        add_action('init', __CLASS__.'::add_custom_post_type_slideshow');
+
+        // add new tab inside Woocommerce Link Menu
+        add_action( 'init', array(__CLASS__, 'setting_new_tabs'));
     }
 
-    function test_echo(){
-        echo "<h1>Hola bebe</h1>";
+    public static function add_custom_post_type_slideshow() {
+        $args = array(
+            'public' => true,
+            'label' => 'Nivo Images',
+            'supports' => array(
+                'title',
+                'thumbnail'
+            )
+        );
+        register_post_type('wc_custom_slideshow', $args);
+    }
+    
+    public static function add_menu_link(){
+        add_menu_page('Titulo pagina', 'SlideShow', 'manage_options', 'my-id', __CLASS__ .'::saludo');
+    }
+
+    public static function saludo() {
+        echo WP_PLUGIN_URL;
     }
 
     public static function uploadSlides(){
@@ -54,7 +56,7 @@ class WP_swiper_slideshow {
      * @return array $settings_tabs Array of WooCommerce setting tabs & their labels, including the Subscription tab.
      */
     public static function add_settings_tab( $settings_tabs ) {
-        $settings_tabs['settings_tab_demo'] = __( 'Settings Demo', 'woocommerce-settings-tab-demo' );
+        $settings_tabs['settings_tab_demo'] = __( 'Marcas', 'woocommerce-settings-tab-demo' );
         return $settings_tabs;
     }
     /**
@@ -97,7 +99,6 @@ class WP_swiper_slideshow {
             'description' => array(
                 'name' => __( 'Description', 'woocommerce-settings-tab-demo' ),
                 'type' => 'textarea',
-                'desc' => __( 'This is a paragraph describing the setting. Lorem ipsum yadda yadda yadda. Lorem ipsum yadda yadda yadda. Lorem ipsum yadda yadda yadda. Lorem ipsum yadda yadda yadda.', 'woocommerce-settings-tab-demo' ),
                 'id'   => 'wc_settings_tab_demo_description'
             ),
             'section_end' => array(
@@ -106,6 +107,46 @@ class WP_swiper_slideshow {
             )
         );
         return apply_filters( 'wc_settings_tab_demo_settings', $settings );
+    }
+
+    function setting_new_tabs() {
+        $labels = array(
+            'name'                => _x( 'Marcas', 'Post Type General Name', 'GWP' ),
+            'singular_name'       => _x( 'Marcas', 'Post Type Singular Name', 'GWP' ),
+            'menu_name'           => __( 'marcas', 'GWP' ),
+            'parent_item_colon'   => __( '', 'GWP' ),
+            'all_items'           => __( 'Marcas', 'GWP' ),
+            'view_item'           => __( '', 'GWP' ),
+            'add_new_item'        => __( 'Agregar Nueva Marca', 'GWP' ),
+            'add_new'             => __( 'Agregar Nueva Marca', 'GWP' ),
+            'edit_item'           => __( 'Editar Marcas', 'GWP' ),
+            'update_item'         => __( 'Actualizar Marcas', 'GWP' ),
+            'search_items'        => __( 'Buscar en Marcas', 'GWP' ),
+            'not_found'           => __( 'No encontrado', 'GWP' ),
+            'not_found_in_trash'  => __( 'No encontrado en la papelera', 'GWP' ),
+        );
+
+        $args = array(
+            'label'               => __( 'Marcas', 'GWP' ),
+            'description'         => __( 'Marcas de los productos que ofrecen', 'GWP' ),
+            'labels'              => $labels,
+            'supports'            => array( 'title', 'editor', ),
+            'hierarchical'        => false,
+            'public'              => true,
+            'show_ui'             => true,
+            'show_in_menu'        => 'edit.php?post_type=product',
+            'show_in_nav_menus'   => false,
+            'show_in_admin_bar'   => true,
+            'menu_position'       => 5,
+            'menu_icon'           => 'dashicons-feedback',
+            'can_export'          => true,
+            'has_archive'         => false,
+            'exclude_from_search' => true,
+            'publicly_queryable'  => false,
+            'capability_type'     => 'post',
+        );
+
+        register_post_type( 'wc_custom_brands', $args );
     }
 }
 WP_swiper_slideshow::init();

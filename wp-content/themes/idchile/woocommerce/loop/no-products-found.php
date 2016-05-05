@@ -19,5 +19,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+$refer_url = $_SERVER['HTTP_REFERER'];
+$short_refer_url = explode('//', $refer_url);
+$url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
+if (count($short_refer_url) === 2){
+	$short_refer_url = $short_refer_url[1];
+}
+
+if ($short_refer_url === $url) {
+	$refer_url = get_site_url();
+}
+
 ?>
-<p class="woocommerce-info"><?php _e( 'No products were found matching your selection.', 'woocommerce' ); ?></p>
+
+<div class="woocommerce-error text-center">
+	<div class="alert alert-danger" role="alert">
+		<p>
+			<strong>
+				<i class="fa fa-meh-o fa-3x" aria-hidden="true"></i>
+				<?php _e( 'No products were found matching your selection.', 'woocommerce' ); ?>
+				<a href="<?php echo $refer_url; ?>">Regresar atras</a>
+			</strong>
+		</p>
+	</div>
+</div>
